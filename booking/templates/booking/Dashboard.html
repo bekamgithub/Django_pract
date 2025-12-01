@@ -1,15 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dashbord</title>
-  </head>
-  <body>
-    <div>
-      <div class="header"></div>
-      <div class="side bar"></div>
-      <div class="body">{{reg}}</div>
-    </div>
-  </body>
-</html>
+{% extends "booking/base.html" %} {% block content %}
+<div class="container">
+  <h2>Book a Reservation</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <label for="name">Full Name</label>
+    <input type="text" name="name" placeholder="Enter your name" required />
+
+    <label for="email">Email</label>
+    <input type="email" name="email" placeholder="Enter your email" required />
+
+    <label for="date">Booking Date</label>
+    <input type="date" name="date" required />
+
+    <label for="time">Time</label>
+    <input type="time" name="time" required />
+
+    <label for="guests">Number of Guests</label>
+    <input type="number" name="guests" min="1" value="1" />
+
+    <button type="submit" class="btn">Confirm Booking</button>
+  </form>
+</div>
+{% endblock %}

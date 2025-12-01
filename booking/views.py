@@ -12,8 +12,12 @@ def sign_up(request):
     return render(request, 'booking/register.html')
 
 
+
 def dashboard(request):
-    return render(request, 'bookong/dashboard.html')
+    if request.method == "POST":
+        print("FORM DATA:", request.POST)
+    return render(request, "booking/dashboard.html")
+
 
 
 def submit(request):
@@ -36,11 +40,5 @@ def submit(request):
     return redirect('register')  # Or handle GET requests appropriately
 
 
-# def submit(request):
-#     create_email = request.POST['email']
-#     register.objects.create(username=create_email)
-
-
-# def submit(request):
-#     create_password = request.POST['password']
-#     register.objects.create(username=create_password)
+def login(request):
+    return render(request, 'booking/login.html')
